@@ -15,4 +15,8 @@ contract WhiteList {
 		Person memory person = Person(_name, _age);
 		people.push(person);
 	}
+
+	function removePerson() public {
+		people.pop();
+	}
 }
