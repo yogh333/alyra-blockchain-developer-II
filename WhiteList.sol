@@ -9,7 +9,7 @@ contract WhiteList {
 		uint8 age;
 	}
 
-    Person[] people;
+    Person[] public people;
 
 	function addPerson(string memory _name, uint8 _age) public {
 		Person memory person = Person(_name, _age);
