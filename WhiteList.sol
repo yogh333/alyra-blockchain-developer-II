@@ -1,6 +1,8 @@
 pragma solidity 0.6.11;
 
 contract WhiteList {
+
+	event Authorized(address _address);
 	
 	mapping(address => bool) whitelist;
 
@@ -9,7 +11,7 @@ contract WhiteList {
 		uint8 age;
 	}
 
-    Person[] public people;
+	Person[] public people;
 
 	function addPerson(string memory _name, uint8 _age) public {
 		Person memory person = Person(_name, _age);
