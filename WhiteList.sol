@@ -1,4 +1,7 @@
-pragma solidity 0.6.11;
+// WhiteList.sol
+// SPDX-License-Identifier: MIT
+
+pragma solidity <0.9.0;
 
 contract WhiteList {
 
@@ -20,5 +23,10 @@ contract WhiteList {
 
 	function removePerson() public {
 		people.pop();
+	}
+	
+	function authorize(address _address) external {
+	    whitelist[_address] = true;
+	    emit Authorized(_address);
 	}
 }
