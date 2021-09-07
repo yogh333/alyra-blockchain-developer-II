@@ -23,7 +23,7 @@ contract Admin is Ownable {
 	}
 	
 	function isWhitelisted(address _user) public view returns (bool _flag){
-        return (whiteList[_user] ? true:false);	    
+        return whiteList[_user];	    
 	}
 	
 	function blacklist(address _user) public onlyOwner() {
@@ -34,6 +34,6 @@ contract Admin is Ownable {
 	}
 	
 	function isBlacklisted(address _user) public view returns (bool _flag){
-        return (blackList[_user] ? true:false);	    
+        return blackList[_user];	    
 	}
 }
