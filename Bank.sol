@@ -4,7 +4,7 @@ pragma solidity <0.9.0;
 
 contract Bank {
     
-    mapping(address => uint256) _balances;
+    mapping(address => uint256) private _balances;
     
     event eDeposit(address _address, uint256 _newbalance);
     event eTransfer(uint256 _senderbalance, uint256 _recipientbalance);
@@ -12,6 +12,7 @@ contract Bank {
     function deposit(uint256 _amount) public payable {
         
         require(msg.value == _amount, "mismatch between _amount and value sent");
+        require(msg.sender != address(0), "You cannot deposit for the address zero");
         
         _balances[msg.sender] += _amount;
         
@@ -20,7 +21,7 @@ contract Bank {
     }
     
     function transfer(address _recipient, uint256 _amount) public {
-        
+        require(_recipient != address(0), "You cannot transfer to the address zero");
         require (_amount <= _balances[msg.sender], "Insufficient balance");
         
         _balances[msg.sender] -= _amount;
