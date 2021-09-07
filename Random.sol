@@ -8,7 +8,7 @@ contract Random {
     
     function random() public returns (uint256 value){
         nonce += 1;
-        return uint(keccak256(abi.encode(block.timestamp, msg.sender, nonce)));
+        return uint(keccak256(abi.encode(block.timestamp, msg.sender, nonce))) % 100;
     }
     
 }
